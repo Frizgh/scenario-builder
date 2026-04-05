@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   addEdge,
   useNodesState,
@@ -158,12 +158,12 @@ export function useFlowEditor(scenarioId: string | undefined) {
   );
 
   // --- drag: вставка узла в ребро ---
-  const handleNodeDragStart = useCallback((_event: React.MouseEvent, node: Node) => {
+  const handleNodeDragStart = useCallback((_event: unknown, node: Node) => {
     dragStartPos.current = { ...node.position };
   }, []);
 
   const handleNodeDragStop = useCallback(
-    (_event: React.MouseEvent, draggedNode: Node) => {
+    (_event: unknown, draggedNode: Node) => {
       setHelperH(null);
       setHelperV(null);
 
