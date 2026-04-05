@@ -4,7 +4,7 @@ import FlowEditor from './components/FlowEditor/FlowEditor';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/scenario-builder">
       <Routes>
         <Route path="/" element={<ScenarioList />} />
         <Route path="/editor/:id" element={<FlowEditor />} />
