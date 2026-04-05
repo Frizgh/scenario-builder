@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   addEdge,
   useNodesState,
@@ -8,7 +8,6 @@ import {
   type Node,
   type Edge,
   type NodeChange,
-  type NodeDragHandler,
 } from '@xyflow/react';
 import { nanoid } from 'nanoid';
 
@@ -159,12 +158,12 @@ export function useFlowEditor(scenarioId: string | undefined) {
   );
 
   // --- drag: вставка узла в ребро ---
-  const handleNodeDragStart: NodeDragHandler = useCallback((_event, node) => {
+  const handleNodeDragStart = useCallback((_event: React.MouseEvent, node: Node) => {
     dragStartPos.current = { ...node.position };
   }, []);
 
-  const handleNodeDragStop: NodeDragHandler = useCallback(
-    (_event, draggedNode) => {
+  const handleNodeDragStop = useCallback(
+    (_event: React.MouseEvent, draggedNode: Node) => {
       setHelperH(null);
       setHelperV(null);
 
