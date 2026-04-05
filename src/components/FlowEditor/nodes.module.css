@@ -1,0 +1,70 @@
+.nodeBase {
+  position: relative;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  min-width: 120px;
+  text-align: center;
+  border: 2px solid;
+}
+
+.action {
+  background: #ede9fe;
+  border-color: #8b5cf6;
+  color: #5b21b6;
+}
+
+.condition {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.label {
+  font-weight: 500;
+  cursor: default;
+  user-select: none;
+}
+
+.editInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+  padding: 0 2px;
+}
+
+.deleteBtn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: #d4d4d8;
+  color: #52525b;
+  font-size: 9px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.deleteBtn:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.nodeBase:hover .deleteBtn {
+  opacity: 1;
+}
+
