@@ -1,6 +1,5 @@
-import type { Scenario, ScenarioPreview } from '../types';
-
-const STORAGE_KEY = 'scenarios';
+import type { Scenario, ScenarioPreview } from '../model/types';
+import { SCENARIOS_STORAGE_KEY as STORAGE_KEY } from '../config';
 
 function delay(ms = 350): Promise<void> {
   return new Promise((res) => setTimeout(res, ms));

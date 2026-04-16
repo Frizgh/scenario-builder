@@ -11,13 +11,10 @@ import {
 } from '@xyflow/react';
 import { nanoid } from 'nanoid';
 
-import { fetchScenario, saveScenario } from '../api/scenarios';
-import type { NodeData, NodeType, Scenario } from '../types';
-import { distToSegment } from '../utils/geometry';
-import { getHelperLines } from '../utils/getHelperLines';
-import { reconnectEdgesOnDelete } from '../utils/reconnectEdges';
-
-const EDGE_SNAP_DISTANCE = 50;
+import { fetchScenario, saveScenario } from '@/entities/scenario';
+import type { NodeData, NodeType, Scenario } from '@/entities/scenario';
+import { distToSegment, getHelperLines, reconnectEdgesOnDelete } from '@/shared/lib';
+import { EDGE_SNAP_DISTANCE } from '../config';
 
 export function useFlowEditor(scenarioId: string | undefined) {
   const { getNodes, getEdges } = useReactFlow();

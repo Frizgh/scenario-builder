@@ -9,15 +9,14 @@ import {
   SelectionMode,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+import type { NodeProps } from '@xyflow/react';
 
-import { useFlowEditor } from '../../hooks/useFlowEditor';
-import type { NodeType } from '../../types';
-import Button from '../UI/Button';
-import Spinner from '../UI/Spinner';
+import type { NodeType } from '@/entities/scenario';
+import { Button, Spinner } from '@/shared/ui';
+import { useFlowEditor } from '../model/useFlowEditor';
 import EditableNode from './EditableNode';
 import HelperLines from './HelperLines';
 import s from './FlowEditor.module.css';
-import type { NodeProps } from '@xyflow/react';
 
 // Каждый тип узла — это EditableNode с нужным вариантом стиля.
 // Фабрика избавляет от двух файлов-однострочников.

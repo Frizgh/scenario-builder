@@ -1,14 +1,19 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { fetchScenarios, createScenario, deleteScenario } from '../../api/scenarios';
-import { useAsync } from '../../hooks/useAsync';
-import type { Scenario, ScenarioPreview } from '../../types';
-import Button from '../UI/Button';
-import Spinner from '../UI/Spinner';
-import s from './ScenarioList.module.css';
+import {
+  fetchScenarios,
+  createScenario,
+  deleteScenario,
+  ScenarioCard,
+  type Scenario,
+  type ScenarioPreview,
+} from '@/entities/scenario';
+import { useAsync } from '@/shared/lib';
+import { Button, Spinner } from '@/shared/ui';
+import s from './ScenarioListPage.module.css';
 
-export default function ScenarioList() {
+export default function ScenarioListPage() {
   const navigate = useNavigate();
   const { data: list, loading, error, run } = useAsync<ScenarioPreview[]>();
 
@@ -38,16 +43,6 @@ export default function ScenarioList() {
     loadList();
   };
 
-  const formatDate = (iso: string) => {
-    return new Date(iso).toLocaleDateString('ru-RU', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  };
-
   return (
     <div className={s.page}>
       <div className={s.header}>
@@ -65,21 +60,16 @@ export default function ScenarioList() {
           ) : (
             <div className={s.list}>
               {list.map((item) => (
-                <div
+                <ScenarioCard
                   key={item.id}
-                  className={s.card}
+                  scenario={item}
                   onClick={() => navigate(`/editor/${item.id}`)}
-                >
-                  <div>
-                    <div className={s.cardTitle}>{item.title}</div>
-                    <div className={s.cardDate}>{formatDate(item.updatedAt)}</div>
-                  </div>
-                  <div className={s.actions}>
+                  actions={
                     <Button variant="danger" onClick={(e) => handleDelete(e, item.id)}>
                       Удалить
                     </Button>
-                  </div>
-                </div>
+                  }
+                />
               ))}
             </div>
           )}

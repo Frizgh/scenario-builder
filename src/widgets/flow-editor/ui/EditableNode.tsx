@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Handle, Position, useReactFlow, type NodeProps } from '@xyflow/react';
-import type { NodeData, NodeType } from '../../types';
-import { reconnectEdgesOnDelete } from '../../utils/reconnectEdges';
+import type { NodeData, NodeType } from '@/entities/scenario';
+import { reconnectEdgesOnDelete } from '@/shared/lib';
 import s from './nodes.module.css';
 
 interface Props extends NodeProps {

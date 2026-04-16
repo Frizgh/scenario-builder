@@ -1,8 +1,9 @@
 import type { Node } from '@xyflow/react';
-
-const SNAP_THRESHOLD = 6;
-const FALLBACK_W = 120;
-const FALLBACK_H = 40;
+import {
+  SNAP_THRESHOLD,
+  FALLBACK_NODE_WIDTH,
+  FALLBACK_NODE_HEIGHT,
+} from '@/shared/config';
 
 export interface HelperLinesResult {
   horizontal: number | null;
@@ -13,8 +14,8 @@ export interface HelperLinesResult {
 
 function getSize(node: Node) {
   return {
-    w: node.measured?.width ?? FALLBACK_W,
-    h: node.measured?.height ?? FALLBACK_H,
+    w: node.measured?.width ?? FALLBACK_NODE_WIDTH,
+    h: node.measured?.height ?? FALLBACK_NODE_HEIGHT,
   };
 }
 
